@@ -13,10 +13,8 @@ if (!userArgs[0].startsWith('mongodb')) {
 }
 */
 var async = require("async");
-var Book = require("./models/book");
-var Author = require("./models/author");
-var Genre = require("./models/genre");
-var BookInstance = require("./models/bookinstance");
+var Category = require("./models/category");
+var Weapon = require("./models/weapon");
 
 var mongoose = require("mongoose");
 var mongoDB = userArgs[0];
@@ -25,111 +23,78 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
-var authors = [];
-var genres = [];
-var books = [];
-var bookinstances = [];
+var categories = [];
+var weapons = [];
 
-function authorCreate(first_name, family_name, d_birth, d_death, cb) {
-  authordetail = { first_name: first_name, family_name: family_name };
-  if (d_birth != false) authordetail.date_of_birth = d_birth;
-  if (d_death != false) authordetail.date_of_death = d_death;
+function categoryCreate(name, description, cb) {
+  categorydetail = { name: name, description: description };
 
-  var author = new Author(authordetail);
+  var category = new Category(categorydetail);
 
-  author.save(function (err) {
+  category.save(function (err) {
     if (err) {
       cb(err, null);
       return;
     }
-    console.log("New Author: " + author);
-    authors.push(author);
-    cb(null, author);
+    console.log("New Category: " + category);
+    categories.push(category);
+    cb(null, category);
   });
 }
 
-function genreCreate(name, cb) {
-  var genre = new Genre({ name: name });
-
-  genre.save(function (err) {
-    if (err) {
-      cb(err, null);
-      return;
-    }
-    console.log("New Genre: " + genre);
-    genres.push(genre);
-    cb(null, genre);
-  });
-}
-
-function bookCreate(title, summary, isbn, author, genre, cb) {
-  bookdetail = {
-    title: title,
-    summary: summary,
-    author: author,
-    isbn: isbn,
+function weaponCreate(
+  weapon_name,
+  weapon_description,
+  weapon_categories,
+  price,
+  cb
+) {
+  weapondetail = {
+    weapon_name: weapon_name,
+    weapon_description: weapon_description,
+    weapon_categories: weapon_categories,
+    price: price,
   };
-  if (genre != false) bookdetail.genre = genre;
 
-  var book = new Book(bookdetail);
-  book.save(function (err) {
+  var weapon = new Weapon(weapondetail);
+
+  weapon.save(function (err) {
     if (err) {
       cb(err, null);
       return;
     }
-    console.log("New Book: " + book);
-    books.push(book);
-    cb(null, book);
+    console.log("New Weapon: " + author);
+    weapons.push(weapon);
+    cb(null, weapon);
   });
 }
 
-function bookInstanceCreate(book, imprint, due_back, status, cb) {
-  bookinstancedetail = {
-    book: book,
-    imprint: imprint,
-  };
-  if (due_back != false) bookinstancedetail.due_back = due_back;
-  if (status != false) bookinstancedetail.status = status;
-
-  var bookinstance = new BookInstance(bookinstancedetail);
-  bookinstance.save(function (err) {
-    if (err) {
-      console.log("ERROR CREATING BookInstance: " + bookinstance);
-      cb(err, null);
-      return;
-    }
-    console.log("New BookInstance: " + bookinstance);
-    bookinstances.push(bookinstance);
-    cb(null, book);
-  });
-}
-
-function createGenreAuthors(cb) {
+function createCategories(cb) {
   async.series(
     [
       function (callback) {
-        authorCreate("Patrick", "Rothfuss", "1973-06-06", false, callback);
+        categoryCreate("Patrick", "Rothfuss", "1973-06-06", false, callback);
       },
       function (callback) {
-        authorCreate("Ben", "Bova", "1932-11-8", false, callback);
+        categoryCreate("Ben", "Bova", "1932-11-8", false, callback);
       },
       function (callback) {
-        authorCreate("Isaac", "Asimov", "1920-01-02", "1992-04-06", callback);
+        categoryCreate("Isaac", "Asimov", "1920-01-02", "1992-04-06", callback);
       },
       function (callback) {
-        authorCreate("Bob", "Billings", false, false, callback);
+        categoryCreate("Bob", "Billings", false, false, callback);
       },
       function (callback) {
-        authorCreate("Jim", "Jones", "1971-12-16", false, callback);
+        categoryCreate("Jim", "Jones", "1971-12-16", false, callback);
       },
       function (callback) {
-        genreCreate("Fantasy", callback);
+        categoryCreate("Fantasy", callback);
       },
       function (callback) {
-        genreCreate("Science Fiction", callback);
+        categoryCreate("Science Fiction", callback);
       },
       function (callback) {
-        genreCreate("French Poetry", callback);
+        categoryCreate("French Poetry", callback);
       },
     ],
     // optional callback
@@ -137,7 +102,7 @@ function createGenreAuthors(cb) {
   );
 }
 
-function createBooks(cb) {
+function createGames(cb) {
   async.parallel(
     [
       function (callback) {
