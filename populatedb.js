@@ -107,7 +107,7 @@ function createWeapons(cb) {
         weaponCreate(
           ".44 pistol",
           "The .44 pistol is a double-action revolver, chambered in the .44 Magnum cartridge, with a blued finish and wooden grips.",
-          [categories[0]],
+          categories[0],
           99,
           callback
         );
@@ -116,7 +116,7 @@ function createWeapons(cb) {
         weaponCreate(
           "10mm pistol",
           "The 10mm pistol is one of the first weapons found inside Vault 111 (after the security baton), located in the overseer's office.",
-          [categories[0]],
+          categories[0],
           50,
           callback
         );
@@ -125,7 +125,7 @@ function createWeapons(cb) {
         weaponCreate(
           "Assault Rifle",
           "DFed from a side-mounted magazine, this assault rifle has anti-aircraft style sights and interchangeable barrels and magazines.",
-          [categories[0]],
+          categories[0],
           144,
           callback
         );
@@ -134,7 +134,7 @@ function createWeapons(cb) {
         weaponCreate(
           "Laser musket",
           "The laser musket is a homemade, nonstandard version of a laser rifle.",
-          [categories[1]],
+          categories[1],
           57,
           callback
         );
