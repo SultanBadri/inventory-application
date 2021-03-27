@@ -1,9 +1,3 @@
-#! /usr/bin/env node
-
-console.log(
-  "This script populates some test books, authors, genres and bookinstances to your database. Specified database as argument - e.g.: populatedb mongodb+srv://cooluser:coolpassword@cluster0.a9azn.mongodb.net/local_library?retryWrites=true"
-);
-
 // Get arguments passed on command line
 var userArgs = process.argv.slice(2);
 /*
@@ -27,9 +21,7 @@ var categories = [];
 var weapons = [];
 
 function categoryCreate(name, description, cb) {
-  categorydetail = { name: name, description: description };
-
-  var category = new Category(categorydetail);
+  var category = new Category({ name: name, description: description || "" });
 
   category.save(function (err) {
     if (err) {
@@ -42,17 +34,11 @@ function categoryCreate(name, description, cb) {
   });
 }
 
-function weaponCreate(
-  weapon_name,
-  weapon_description,
-  weapon_categories,
-  price,
-  cb
-) {
+function weaponCreate(name, description, category, price, cb) {
   weapondetail = {
-    weapon_name: weapon_name,
-    weapon_description: weapon_description,
-    weapon_categories: weapon_categories,
+    name: name,
+    description: description,
+    category: category,
     price: price,
   };
 
@@ -63,7 +49,7 @@ function weaponCreate(
       cb(err, null);
       return;
     }
-    console.log("New Weapon: " + author);
+    console.log("New Weapon: " + weapon);
     weapons.push(weapon);
     cb(null, weapon);
   });
@@ -73,105 +59,38 @@ function createCategories(cb) {
   async.series(
     [
       function (callback) {
-        categoryCreate("Patrick", "Rothfuss", "1973-06-06", false, callback);
-      },
-      function (callback) {
-        categoryCreate("Ben", "Bova", "1932-11-8", false, callback);
-      },
-      function (callback) {
-        categoryCreate("Isaac", "Asimov", "1920-01-02", "1992-04-06", callback);
-      },
-      function (callback) {
-        categoryCreate("Bob", "Billings", false, false, callback);
-      },
-      function (callback) {
-        categoryCreate("Jim", "Jones", "1971-12-16", false, callback);
-      },
-      function (callback) {
-        categoryCreate("Fantasy", callback);
-      },
-      function (callback) {
-        categoryCreate("Science Fiction", callback);
-      },
-      function (callback) {
-        categoryCreate("French Poetry", callback);
-      },
-    ],
-    // optional callback
-    cb
-  );
-}
-
-function createGames(cb) {
-  async.parallel(
-    [
-      function (callback) {
-        bookCreate(
-          "The Name of the Wind (The Kingkiller Chronicle, #1)",
-          "I have stolen princesses back from sleeping barrow kings. I burned down the town of Trebon. I have spent the night with Felurian and left with both my sanity and my life. I was expelled from the University at a younger age than most people are allowed in. I tread paths by moonlight that others fear to speak of during day. I have talked to Gods, loved women, and written songs that make the minstrels weep.",
-          "9781473211896",
-          authors[0],
-          [genres[0]],
+        categoryCreate(
+          "Ballistic Weapons",
+          "They come with bullets.",
           callback
         );
       },
       function (callback) {
-        bookCreate(
-          "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
-          "Picking up the tale of Kvothe Kingkiller once again, we follow him into exile, into political intrigue, courtship, adventure, love and magic... and further along the path that has turned Kvothe, the mightiest magician of his age, a legend in his own time, into Kote, the unassuming pub landlord.",
-          "9788401352836",
-          authors[0],
-          [genres[0]],
+        categoryCreate("Energy Weapons", "Guns with fusion cells.", callback);
+      },
+      function (callback) {
+        categoryCreate("Radiation Weapons", "Gamma/acid guns.", callback);
+      },
+      function (callback) {
+        categoryCreate("Explosives", "Grenades.", callback);
+      },
+      function (callback) {
+        categoryCreate("Traps", "You don't want to run into these!", callback);
+      },
+      function (callback) {
+        categoryCreate(
+          "Melee Weapons",
+          "Handheld, close combat weapons.",
           callback
         );
       },
       function (callback) {
-        bookCreate(
-          "The Slow Regard of Silent Things (Kingkiller Chronicle)",
-          "Deep below the University, there is a dark place. Few people know of it: a broken web of ancient passageways and abandoned rooms. A young woman lives there, tucked among the sprawling tunnels of the Underthing, snug in the heart of this forgotten place.",
-          "9780756411336",
-          authors[0],
-          [genres[0]],
-          callback
-        );
+        categoryCreate("Unarmed Weapons", "Your fists.", callback);
       },
       function (callback) {
-        bookCreate(
-          "Apes and Angels",
-          "Humankind headed out to the stars not for conquest, nor exploration, nor even for curiosity. Humans went to the stars in a desperate crusade to save intelligent life wherever they found it. A wave of death is spreading through the Milky Way galaxy, an expanding sphere of lethal gamma ...",
-          "9780765379528",
-          authors[1],
-          [genres[1]],
-          callback
-        );
-      },
-      function (callback) {
-        bookCreate(
-          "Death Wave",
-          "In Ben Bova's previous novel New Earth, Jordan Kell led the first human mission beyond the solar system. They discovered the ruins of an ancient alien civilization. But one alien AI survived, and it revealed to Jordan Kell that an explosion in the black hole at the heart of the Milky Way galaxy has created a wave of deadly radiation, expanding out from the core toward Earth. Unless the human race acts to save itself, all life on Earth will be wiped out...",
-          "9780765379504",
-          authors[1],
-          [genres[1]],
-          callback
-        );
-      },
-      function (callback) {
-        bookCreate(
-          "Test Book 1",
-          "Summary of test book 1",
-          "ISBN111111",
-          authors[4],
-          [genres[0], genres[1]],
-          callback
-        );
-      },
-      function (callback) {
-        bookCreate(
-          "Test Book 2",
-          "Summary of test book 2",
-          "ISBN222222",
-          authors[4],
-          false,
+        categoryCreate(
+          "Poison Weapons",
+          "Explosives with side effects.",
           callback
         );
       },
@@ -181,110 +100,59 @@ function createGames(cb) {
   );
 }
 
-function createBookInstances(cb) {
+function createWeapons(cb) {
   async.parallel(
     [
       function (callback) {
-        bookInstanceCreate(
-          books[0],
-          "London Gollancz, 2014.",
-          false,
-          "Available",
+        weaponCreate(
+          ".44 pistol",
+          "The .44 pistol is a double-action revolver, chambered in the .44 Magnum cartridge, with a blued finish and wooden grips.",
+          [categories[0]],
+          99,
           callback
         );
       },
       function (callback) {
-        bookInstanceCreate(
-          books[1],
-          " Gollancz, 2011.",
-          false,
-          "Loaned",
+        weaponCreate(
+          "10mm pistol",
+          "The 10mm pistol is one of the first weapons found inside Vault 111 (after the security baton), located in the overseer's office.",
+          [categories[0]],
+          50,
           callback
         );
       },
       function (callback) {
-        bookInstanceCreate(
-          books[2],
-          " Gollancz, 2015.",
-          false,
-          false,
+        weaponCreate(
+          "Assault Rifle",
+          "DFed from a side-mounted magazine, this assault rifle has anti-aircraft style sights and interchangeable barrels and magazines.",
+          [categories[0]],
+          144,
           callback
         );
       },
       function (callback) {
-        bookInstanceCreate(
-          books[3],
-          "New York Tom Doherty Associates, 2016.",
-          false,
-          "Available",
+        weaponCreate(
+          "Laser musket",
+          "The laser musket is a homemade, nonstandard version of a laser rifle.",
+          [categories[1]],
+          57,
           callback
         );
-      },
-      function (callback) {
-        bookInstanceCreate(
-          books[3],
-          "New York Tom Doherty Associates, 2016.",
-          false,
-          "Available",
-          callback
-        );
-      },
-      function (callback) {
-        bookInstanceCreate(
-          books[3],
-          "New York Tom Doherty Associates, 2016.",
-          false,
-          "Available",
-          callback
-        );
-      },
-      function (callback) {
-        bookInstanceCreate(
-          books[4],
-          "New York, NY Tom Doherty Associates, LLC, 2015.",
-          false,
-          "Available",
-          callback
-        );
-      },
-      function (callback) {
-        bookInstanceCreate(
-          books[4],
-          "New York, NY Tom Doherty Associates, LLC, 2015.",
-          false,
-          "Maintenance",
-          callback
-        );
-      },
-      function (callback) {
-        bookInstanceCreate(
-          books[4],
-          "New York, NY Tom Doherty Associates, LLC, 2015.",
-          false,
-          "Loaned",
-          callback
-        );
-      },
-      function (callback) {
-        bookInstanceCreate(books[0], "Imprint XXX2", false, false, callback);
-      },
-      function (callback) {
-        bookInstanceCreate(books[1], "Imprint XXX3", false, false, callback);
       },
     ],
-    // Optional callback
+    // optional callback
     cb
   );
 }
 
 async.series(
-  [createGenreAuthors, createBooks, createBookInstances],
+  [createCategories, createWeapons],
   // Optional callback
   function (err, results) {
     if (err) {
       console.log("FINAL ERR: " + err);
     } else {
-      console.log("BOOKInstances: " + bookinstances);
+      console.log("Weapons: " + weapons);
     }
     // All done, disconnect from database
     mongoose.connection.close();
