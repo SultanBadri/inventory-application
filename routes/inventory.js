@@ -4,8 +4,6 @@ const weapon_controller = require("../controllers/weaponController");
 const category_controller = require("../controllers/categoryController");
 
 /* GET inventory. */
-router.get("/", function (req, res, next) {
-  res.send("NOT IMPLEMENTED YET");
-});
+router.get("/", weapon_controller.weapon_list);
 
 module.exports = router;
