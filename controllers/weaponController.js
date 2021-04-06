@@ -14,7 +14,7 @@ exports.weapon_list = function (req, res, next) {
       },
       categories: function (callback) {
         Category.find()
-          .sort([["name", "asc"]])
+          .sort([["name", "ascending"]])
           .exec(callback);
       },
     },
@@ -22,9 +22,12 @@ exports.weapon_list = function (req, res, next) {
       if (err) {
         return next(err);
       }
-      // Successful, so render
-      res.render("index", {
-        title: "Weapons list",
+      //Successful, so render
+      results.weapons.map((weapon) => {
+        return weapon;
+      });
+      res.render("weapon_list", {
+        title: "Weapon List",
         weapon_list: results.weapons,
         category_list: results.categories,
       });

@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h2= title
+  body
+    each category in category_list
+      li
+        a.category(href=category.url) #{category.name}

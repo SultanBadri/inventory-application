@@ -1,8 +1,11 @@
 doctype html
 html
   head
+    include header.pug
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     meta(name="viewport", content="width=device-width, initial-scale=1")
   body
     block content
+
+    include footer.pug
