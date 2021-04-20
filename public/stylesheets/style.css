@@ -4,5 +4,28 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+
+/* Header */
+.header {
+  display: flex;
+  list-style: none;
+  padding: 0.5em;
+}
+
+.header li {
+  padding: 1em;
+}
+
+/* weapons */
+.weapons-container {
+}
+
+.weapons-container li {
+  list-style: none;
+  padding: 0.5em;
+}
+
+.weapon {
 }

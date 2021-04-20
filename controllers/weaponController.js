@@ -2,7 +2,7 @@ const async = require("async");
 const Weapon = require("../models/weapon");
 const Category = require("../models/category");
 
-// List all the weapons
+// List of all weapons
 exports.weapon_list = function (req, res, next) {
   async.parallel(
     {
@@ -27,7 +27,7 @@ exports.weapon_list = function (req, res, next) {
         return weapon;
       });
       res.render("weapon_list", {
-        title: "Weapon List",
+        title: "All Weapons",
         weapon_list: results.weapons,
         category_list: results.categories,
       });
