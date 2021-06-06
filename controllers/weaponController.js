@@ -22,10 +22,12 @@ exports.weapon_list = function (req, res, next) {
       if (err) {
         return next(err);
       }
-      //Successful, so render
+
+      // Successful, so render
       results.weapons.map((weapon) => {
         return weapon;
       });
+
       res.render("weapon_list", {
         title: "All Weapons",
         weapon_list: results.weapons,

@@ -2,12 +2,8 @@ extends layout
 
 block content
   body
-  div.header
-    each category in category_list
-      li
-        a.category(href=category.url) #{category.name}
-  h2= title
-  div.weapons-container
-    each weapon in weapon_list
-      li(class="weapon")
-        a.weapon(href=weapon.url) #{weapon.name}
+    h2= title
+    div.weapons-container
+      each weapon in weapon_list
+        li(class="weapon")
+          a.weapon(href=weapon.url) #{weapon.name}

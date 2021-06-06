@@ -1,2 +1,7 @@
 head
-    h1 Fallout Weapons
+    body
+      h1 Fallout Weapons
+      div.header
+        each category in category_list
+          li
+            a.category(href=category.url) #{category.name}
