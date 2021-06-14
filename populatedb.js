@@ -35,14 +35,14 @@ function categoryCreate(name, description, cb) {
 }
 
 function weaponCreate(name, description, category, price, cb) {
-  weapondetail = {
+  weaponDetail = {
     name: name,
     description: description,
     category: category,
     price: price,
   };
 
-  var weapon = new Weapon(weapondetail);
+  var weapon = new Weapon(weaponDetail);
 
   weapon.save(function (err) {
     if (err) {
