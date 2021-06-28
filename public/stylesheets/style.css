@@ -82,13 +82,29 @@ body {
 }
 
 .weapons-container {
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .weapons-container li {
   list-style: none;
-  padding: 0.5em;
+  padding: 0.5em 0;
+}
+
+.weapons-container li a {
+  display: inline-block;
+  font-weight: bolder;
+  width: 80%;
+  padding: 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: black;
+}
+
+.weapons-container li a:hover {
+  background-color: #fef265;
 }
 
 .weapon {
 }
+
+/* footer.pug */
