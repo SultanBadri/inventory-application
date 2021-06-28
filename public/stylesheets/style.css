@@ -3,15 +3,15 @@
 *::after {
   padding: 0;
   margin: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
   box-sizing: inherit;
+  font: 10px;
 }
 
 body {
-  font: 14px;
   font-family: sans-serif;
 }
 
@@ -108,3 +108,12 @@ body {
 }
 
 /* footer.pug */
+.footer-container {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #325886;
+  color: #fef265;
+  text-align: center;
+}
