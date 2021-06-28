@@ -4,6 +4,9 @@ block content
   body
     h2= title
     div
-      each weapon in weapon_list 
-        li
-          a(href=weapon.url) #{weapon.name}
+      if category_weapons.length == 0
+        p Category is empty.
+      else
+        each category in category_weapons
+          li
+            a(href=category.url) #{category.name}

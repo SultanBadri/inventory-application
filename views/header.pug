@@ -2,6 +2,8 @@ head
     body
       h1 Fallout Weapons
       div.header
+        li
+          a.category(href="/inventory") All weapons
         each category in category_list
           li
             a.category(href=category.url) #{category.name}

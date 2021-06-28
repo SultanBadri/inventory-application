@@ -20,6 +20,9 @@ exports.category_game_list = function (req, res, next) {
       selected_category: function (callback) {
         Category.findById(req.params.id).exec(callback);
       },
+      category_weapons: function (callback) {
+        Weapon.find({ category: req.params.id }).exec(callback);
+      },
     },
     function (err, results) {
       if (err) {
@@ -40,6 +43,7 @@ exports.category_game_list = function (req, res, next) {
         weapon_list: results.weapons,
         category_list: results.categories,
         selected_category: results.selected_category,
+        category_weapons: results.category_weapons,
       });
     }
   );
