@@ -3,7 +3,7 @@ extends layout
 block content
   body
     div.weapons-container
-      h2.weapons-header= title
+      h2.h2-header= title
       each weapon in weapon_list
         li(class="weapon")
-          a.weapon(href=weapon.url) #{weapon.name}
+          a(href=weapon.url) #{weapon.name}
