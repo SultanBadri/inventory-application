@@ -1,25 +1,88 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: inherit;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px;
+  font-family: sans-serif;
 }
 
-a {
-  color: #00b7ff;
-}
-
-/* Header */
+/* header.pug */
 .header {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 4rem;
+  background-color: #325886;
+  color: #fef265;
+}
+
+.header ul {
+  display: flex;
+  padding: 0 2rem;
   list-style: none;
-  padding: 0.5em;
 }
 
 .header li {
-  padding: 1em;
+  padding: 0.5em 1rem;
 }
 
-/* weapons */
+.header a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.header a:hover {
+  color: #fef265;
+}
+
+.dropdown {
+  display: inline-block;
+  text-align: center;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #447ab9;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.dropdown-menu a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* weapons.pug */
+.weapons-header {
+  color: #447ab9;
+}
+
 .weapons-container {
+  padding: 1rem;
 }
 
 .weapons-container li {

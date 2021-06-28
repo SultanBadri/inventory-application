@@ -1,9 +1,12 @@
 head
     body
-      h1 Fallout Weapons
       div.header
-        li
-          a.category(href="/inventory") All weapons
-        each category in category_list
+        h2 Fallout Weapons
+        ul
           li
-            a.category(href=category.url) #{category.name}
+            a.category(href="/inventory") Home
+          li.dropdown
+            a Categories
+            div.dropdown-menu
+              each category in category_list
+                a.category(href=category.url) #{category.name}
