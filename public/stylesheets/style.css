@@ -121,3 +121,10 @@ body {
   font-weight: bolder;
   padding: 1rem;
 }
+
+/* category.pug */
+.empty {
+  font-size: 1rem;
+  color: black;
+  padding: 1.5em 1rem;
+}

@@ -5,7 +5,7 @@ block content
     div.weapons-container
       h2.h2-header= title
         if category_weapons.length == 0
-          p Category is empty.
+          p.empty Category is empty.
         else
           each category in category_weapons
             li(class="weapon")

@@ -36,3 +36,37 @@ exports.weapon_list = function (req, res, next) {
     }
   );
 };
+
+// Detail weapon page for a specific weapon
+exports.weapon_detail = function (req, res, next) {
+  async.parallel(
+    {
+      weapons: function (callback) {
+        Weapon.findById(req.params.id)
+          .populate("weapon")
+          .populate("category")
+          .exec(callback);
+      },
+      weapon_instance: function (callback) {
+        Weapon.find({ weapon: req.params.id }).exec(callback);
+      },
+    },
+    function (err, results) {
+      if (err) {
+        return next(err);
+      }
+      if (results.weapon == null) {
+        // No results
+        var err = new Error("Weapon not found");
+        err.status = 404;
+        return next(err);
+      }
+      // Successful, so render
+      res.render("weapon_detail", {
+        title: results.weapon.title,
+        weapon: results.weapon,
+        weapon_instances: results.weapon_instance,
+      });
+    }
+  );
+};
