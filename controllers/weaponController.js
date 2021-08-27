@@ -50,6 +50,11 @@ exports.weapon_detail = function (req, res, next) {
       weapon_instance: function (callback) {
         Weapon.find({ weapon: req.params.id }).exec(callback);
       },
+      categories: function (callback) {
+        Category.find()
+          .sort([["name", "ascending"]])
+          .exec(callback);
+      },
     },
     function (err, results) {
       if (err) {
@@ -64,8 +69,9 @@ exports.weapon_detail = function (req, res, next) {
       // Successful, so render
       res.render("weapon_detail", {
         title: results.weapon.name,
-        weapon: results.weapon,
-        weapon_instance: results.weapon_instance,
+        weapon_description: results.weapon.description,
+        weapon_price: results.weapon.price,
+        category_list: results.categories,
       });
     }
   );

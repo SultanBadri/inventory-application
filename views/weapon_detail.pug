@@ -2,5 +2,12 @@ extends layout
 
 block content
   body
-    p= title
-    h2= weapon
+    div.center
+      table(style='width:100%', margin="0 auto", border='1')
+        h2.table-header= title
+        tr
+          th Description
+          td #{weapon_description}
+        tr
+          th Price
+          td $#{weapon_price}
