@@ -41,7 +41,7 @@ exports.weapon_list = function (req, res, next) {
 exports.weapon_detail = function (req, res, next) {
   async.parallel(
     {
-      weapons: function (callback) {
+      weapon: function (callback) {
         Weapon.findById(req.params.id)
           .populate("weapon")
           .populate("category")
@@ -63,9 +63,9 @@ exports.weapon_detail = function (req, res, next) {
       }
       // Successful, so render
       res.render("weapon_detail", {
-        title: results.weapon.title,
+        title: results.weapon.name,
         weapon: results.weapon,
-        weapon_instances: results.weapon_instance,
+        weapon_instance: results.weapon_instance,
       });
     }
   );
