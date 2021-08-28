@@ -135,7 +135,7 @@ function createWeapons(cb) {
           65,
           6,
           48,
-          "https://static.wikia.nocookie.net/fallout/images/7/79/FO4_44_revolver.png/revision/latest?cb=20200517120419",
+          "https://imgr.search.brave.com/YeoSDvG980-MBl-b7xwINq1kdXDZTo4BQeGQO5B7lMo/fit/1200/923/ce/1/aHR0cHM6Ly92aWdu/ZXR0ZS53aWtpYS5u/b2Nvb2tpZS5uZXQv/ZmFsbG91dC9pbWFn/ZXMvMS8xMy80NF9w/aXN0b2wucG5nL3Jl/dmlzaW9uL2xhdGVz/dD9jYj0yMDE1MTEy/MjE1MTExNw",
           callback
         );
       },
@@ -151,7 +151,7 @@ function createWeapons(cb) {
           60,
           12,
           18,
-          "https://static.wikia.nocookie.net/fallout/images/c/c8/Fallout4_10mm_pistol.png/revision/latest/scale-to-width/360?cb=20210221201508",
+          "https://imgr.search.brave.com/XH9qfWd39Y7ciESY-5NTZe1izTnI2zwODBDrQVDXuag/fit/1200/943/ce/1/aHR0cDovL3ZpZ25l/dHRlNC53aWtpYS5u/b2Nvb2tpZS5uZXQv/ZmFsbG91dC9pbWFn/ZXMvYi9iYS8xMG1t/X2xvbmdfYmFycmVs/LnBuZy9yZXZpc2lv/bi9sYXRlc3Q_Y2I9/MjAxNjAzMTcwNDM2/MDU",
           callback
         );
       },
@@ -167,7 +167,7 @@ function createWeapons(cb) {
           72,
           30,
           30,
-          "https://static.wikia.nocookie.net/fallout/images/7/78/AssaultrifleFO4.png/revision/latest?cb=20210325181834",
+          "https://imgr.search.brave.com/QkJl8_jOaygp1-n24rTNbFbq_d8H19Xf0BYbrb6RhSc/fit/1200/980/ce/1/aHR0cHM6Ly92aWdu/ZXR0ZS53aWtpYS5u/b2Nvb2tpZS5uZXQv/ZmFsbG91dC9pbWFn/ZXMvNy83OC9Bc3Nh/dWx0cmlmbGVGTzQu/cG5nL3JldmlzaW9u/L2xhdGVzdD9jYj0y/MDE3MDExMjAxNDEz/MA",
           callback
         );
       },
@@ -183,7 +183,7 @@ function createWeapons(cb) {
           70,
           1,
           30,
-          "https://static.wikia.nocookie.net/fallout/images/1/16/FO4LaserMusket.png/revision/latest?cb=20180104230937",
+          "https://imgr.search.brave.com/mTJdJtmFGYGqdtxmSCtD-DOTGz1cTeOtQFlaZz2LsJ8/fit/1200/554/ce/1/aHR0cHM6Ly92aWdu/ZXR0ZS53aWtpYS5u/b2Nvb2tpZS5uZXQv/ZmFsbG91dC9pbWFn/ZXMvMS8xNi9GTzRM/YXNlck11c2tldC5w/bmcvcmV2aXNpb24v/bGF0ZXN0P2NiPTIw/MTgwMTA0MjMwOTM3",
           callback
         );
       },
@@ -199,7 +199,7 @@ function createWeapons(cb) {
           71,
           30,
           24,
-          "https://static.wikia.nocookie.net/fallout/images/3/3c/Fallout4_laser_pistol.png/revision/latest?cb=20190808164830",
+          "https://imgr.search.brave.com/Tq0HqZyF0TZU6pIP3ttWwEueMDY13LLaay_K3D6udas/fit/1200/842/ce/1/aHR0cHM6Ly92aWdu/ZXR0ZS53aWtpYS5u/b2Nvb2tpZS5uZXQv/ZmFsbG91dC9pbWFn/ZXMvMy8zYy9GYWxs/b3V0NF9sYXNlcl9w/aXN0b2wucG5nL3Jl/dmlzaW9uL2xhdGVz/dD9jYj0yMDE3MDEx/ODA0MTQ0Mg",
           callback
         );
       },
@@ -215,7 +215,7 @@ function createWeapons(cb) {
           69,
           8,
           100,
-          "https://static.wikia.nocookie.net/fallout/images/b/bc/FO76_Gamma_gun.png/revision/latest?cb=20190214211416",
+          "https://imgr.search.brave.com/8W6sPTyGOlCqiqNLja1YFW4QZ51xoh3Ko18EdrvBP5I/fit/925/706/ce/1/aHR0cHM6Ly92aWdu/ZXR0ZS53aWtpYS5u/b2Nvb2tpZS5uZXQv/ZmFsbG91dC9pbWFn/ZXMvZi9mMi9HYW1t/YV9ndW5fKEZhbGxv/dXRfNCkucG5nL3Jl/dmlzaW9uL2xhdGVz/dD9jYj0yMDE3MTIw/NDIyNTEwOA",
           callback
         );
       },
@@ -231,7 +231,7 @@ function createWeapons(cb) {
           "N/A",
           "N/A",
           150,
-          "https://static.wikia.nocookie.net/fallout/images/0/05/Fallout4_Pulse_grenade.png/revision/latest?cb=20160118224031",
+          "https://imgr.search.brave.com/EmPqXCnRA58Uh5RjmZFAEUiPtacNQVIhh-PjQSCKdvM/fit/737/709/ce/1/aHR0cHM6Ly92aWdu/ZXR0ZS53aWtpYS5u/b2Nvb2tpZS5uZXQv/ZmFsbG91dC9pbWFn/ZXMvMC8wNS9GYWxs/b3V0NF9QdWxzZV9n/cmVuYWRlLnBuZy9y/ZXZpc2lvbi9sYXRl/c3Q_Y2I9MjAxNjAx/MTgyMjQwMzE",
           callback
         );
       },
@@ -247,7 +247,7 @@ function createWeapons(cb) {
           0,
           "N/A",
           34,
-          "https://static.wikia.nocookie.net/fallout/images/a/a9/Fo4FH_bear_trap.png/revision/latest?cb=20200225210908",
+          "https://imgr.search.brave.com/gNF6axaaDBOr0-oBlF4Tqp5QzEyvNi4TsAR4fJTjFuo/fit/1200/702/ce/1/aHR0cHM6Ly92aWdu/ZXR0ZS53aWtpYS5u/b2Nvb2tpZS5uZXQv/ZmFsbG91dC9pbWFn/ZXMvYS9hOS9GbzRG/SF9iZWFyX3RyYXAu/cG5nL3JldmlzaW9u/L2xhdGVzdD9jYj0y/MDE2MDUyNDIyMTgy/Mg",
           callback
         );
       },
@@ -263,7 +263,7 @@ function createWeapons(cb) {
           "N/A",
           "N/A",
           4,
-          "https://static.wikia.nocookie.net/fallout/images/3/3e/Ripper_%28Fallout_4%29.png/revision/latest?cb=20200312212308",
+          "https://imgr.search.brave.com/DLhlUQIKM0SudsB7thZZfKTN3KGevUMcm2PoNZgTUpk/fit/1200/690/ce/1/aHR0cHM6Ly92aWdu/ZXR0ZS53aWtpYS5u/b2Nvb2tpZS5uZXQv/ZmFsbG91dC9pbWFn/ZXMvMy8zZS9SaXBw/ZXJfKEZhbGxvdXRf/NCkucG5nL3Jldmlz/aW9uL2xhdGVzdD9j/Yj0yMDE1MTExNTE4/MDE1NQ",
           callback
         );
       },
@@ -279,7 +279,7 @@ function createWeapons(cb) {
           "N/A",
           "N/A",
           9,
-          "https://static.wikia.nocookie.net/fallout/images/c/c4/Fallout4_boxing_glove.png/revision/latest/scale-to-width/360?cb=20180113141023",
+          "https://imgr.search.brave.com/K1mqSIlWZcs6IIjYpwbmHrKeNkBBngUFVi2pEUMi6cw/fit/1037/1014/ce/1/aHR0cHM6Ly9mYWxs/b3V0LmdhbWVwZWRp/YS5jb20vbWVkaWEv/ZmFsbG91dC5nYW1l/cGVkaWEuY29tL2Uv/ZTgvRm80X0dsb3Zl/LnBuZw",
           callback
         );
       },
