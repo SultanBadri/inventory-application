@@ -43,7 +43,7 @@ exports.weapon_detail = function (req, res, next) {
     {
       weapon: function (callback) {
         Weapon.findById(req.params.id)
-          .populate("weapon")
+          .populate({ path: "weapon", limit: 10 })
           .populate("category")
           .exec(callback);
       },
@@ -71,6 +71,13 @@ exports.weapon_detail = function (req, res, next) {
         title: results.weapon.name,
         weapon_description: results.weapon.description,
         weapon_price: results.weapon.price,
+        weapon_weight: results.weapon.weight,
+        weapon_ammo: results.weapon.ammo,
+        weapon_range: results.weapon.range,
+        weapon_accuracy: results.weapon.accuracy,
+        weapon_clipSize: results.weapon.clipSize,
+        weapon_damage: results.weapon.damage,
+        weapon_src: results.weapon.src,
         category_list: results.categories,
       });
     }

@@ -5,9 +5,28 @@ block content
     div.center
       table(style='width:100%', margin="0 auto", border='1')
         h2.table-header= title
+        img(src=weapon_src alt=title)
         tr
           th Description
           td #{weapon_description}
         tr
+          th Damage
+          td #{weapon_damage}
+        tr
           th Price
           td $#{weapon_price}
+        tr
+          th Weight
+          td #{weapon_weight}
+        tr
+          th Ammo
+          td #{weapon_ammo}
+        tr
+          th Range
+          td #{weapon_range}
+        tr
+          th Accuracy
+          td #{weapon_accuracy}
+        tr
+          th Clip Size 
+          td #{weapon_clip_size}

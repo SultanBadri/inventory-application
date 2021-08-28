@@ -45,7 +45,7 @@ function weaponCreate(
   accuracy,
   clipSize,
   damage,
-  url,
+  src,
   cb
 ) {
   weaponDetail = {
@@ -59,7 +59,7 @@ function weaponCreate(
     accuracy: accuracy,
     clipSize: clipSize,
     damage: damage,
-    url: url,
+    src: src,
   };
 
   var weapon = new Weapon(weaponDetail);
