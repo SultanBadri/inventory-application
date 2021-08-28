@@ -43,7 +43,7 @@ exports.weapon_detail = function (req, res, next) {
     {
       weapon: function (callback) {
         Weapon.findById(req.params.id)
-          .populate({ path: "weapon", limit: 10 })
+          .populate("weapon")
           .populate("category")
           .exec(callback);
       },
