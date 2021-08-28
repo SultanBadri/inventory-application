@@ -8,9 +8,9 @@ const WeaponSchema = new Schema({
   price: { type: Number, required: true, min: 0, max: 100000 },
   weight: { type: Number, required: true },
   ammo: { type: String, required: true, maxlength: 100 },
-  range: { type: Number || String, required: true },
-  accuracy: { type: Number || String, required: true },
-  clipSize: { type: Number || String, required: true },
+  range: { type: Schema.Types.Mixed, required: true },
+  accuracy: { type: Schema.Types.Mixed, required: true },
+  clipSize: { type: Schema.Types.Mixed, required: true },
   damage: { type: Number, required: true, min: 0 },
   src: { type: String, required: true },
 });
