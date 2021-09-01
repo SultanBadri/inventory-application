@@ -8,3 +8,4 @@ cd inventory-application
 npm install
 npm run devstart
 ```
+The site is now running at ```localhost:3000```.
