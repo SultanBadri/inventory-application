@@ -7,9 +7,15 @@ const category_controller = require("../controllers/categoryController");
 router.get("/", weapon_controller.weapon_list);
 
 // GET request for one weapon
-router.get("/weapon/:id", weapon_controller.weapon_detail);
+router.get("/weapons/:id", weapon_controller.weapon_detail);
 
 // GET category view
 router.get("/category/:id", category_controller.category_game_list);
+
+// GET request for creating a new weapon
+router.get("/weapon/create", weapon_controller.weapon_create_get);
+
+// POST request for create weapon
+router.post("/weapon/create", weapon_controller.weapon_create_post);
 
 module.exports = router;
