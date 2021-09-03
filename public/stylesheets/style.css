@@ -100,7 +100,8 @@ body {
 
 .dropdown-menu a {
   color: white;
-  padding: 12px 16px;
+  margin: 14px;
+  padding: 2px;
   text-decoration: none;
   display: block;
   text-align: left;
@@ -198,4 +199,39 @@ body {
     height: 100%;
     width: 100%;
   }
+}
+
+/* weapon_form */
+label {
+  font-weight: bold;
+}
+
+input {
+  border-radius: 4px;
+  border: 1px solid black;
+  padding: 4px;
+}
+
+.container {
+  padding: 2rem;
+}
+
+/* .form-group {
+  padding: 1rem;
+} */
+
+.submit-button {
+  padding: 8px 16px;
+  border: none;
+  background: #4d88d1;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-button:hover {
+  background: #36659e;
 }

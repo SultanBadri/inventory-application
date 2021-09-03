@@ -120,28 +120,15 @@ exports.weapon_create_get = function (req, res, next) {
 // Handle Weapon create on POST.
 exports.weapon_create_post = [
   // Validate and sanitize fields.
-  body("first_name")
-    .trim()
-    .isLength({ min: 1 })
-    .escape()
-    .withMessage("First name must be specified.")
-    .isAlphanumeric()
-    .withMessage("First name has non-alphanumeric characters."),
-  body("family_name")
-    .trim()
-    .isLength({ min: 1 })
-    .escape()
-    .withMessage("Family name must be specified.")
-    .isAlphanumeric()
-    .withMessage("Family name has non-alphanumeric characters."),
-  body("date_of_birth", "Invalid date of birth")
-    .optional({ checkFalsy: true })
-    .isISO8601()
-    .toDate(),
-  body("date_of_death", "Invalid date of death")
-    .optional({ checkFalsy: true })
-    .isISO8601()
-    .toDate(),
+  body("name").trim().isLength({ min: 1 }).escape(),
+  body("description").trim().isLength({ min: 1 }).escape(),
+  body("price").trim().isLength({ min: 1 }).escape(),
+  body("weight").trim().isLength({ min: 1 }).escape(),
+  body("ammo").trim().isLength({ min: 1 }).escape(),
+  body("range").trim().isLength({ min: 1 }).escape(),
+  body("accuracy").trim().isLength({ min: 1 }).escape(),
+  body("clip-size").trim().isLength({ min: 1 }).escape(),
+  body("src").trim().isLength({ min: 1 }).escape(),
 
   // Process request after validation and sanitization.
   (req, res, next) => {
