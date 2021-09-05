@@ -150,6 +150,7 @@ exports.weapon_create_post = [
 
       // Create an Weapon object with escaped and trimmed data.
       var weapon = new Weapon({
+        name: req.body.name,
         category: req.body.category,
         description: req.body.description,
         damage: req.body.damage,

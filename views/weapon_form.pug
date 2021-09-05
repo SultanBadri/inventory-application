@@ -12,14 +12,16 @@ block content
         br
         label(for="category") Category 
         select(name="category" id="category")
-          option(value="Ballistic") Ballistic
-          option(value="Energy") Energy
-          option(value="Radiation") Radiation
-          option(value="Explosives") Explosives
-          option(value="Traps") Traps
-          option(value="Melee") Melee
-          option(value="Unarmed") Unarmed
-          option(value="Explosives") Explosives
+          //- option(value="Ballistic Weapons") Ballistic 
+          //- option(value="Energy Weapons") Energy
+          //- option(value="Radiation Weapons") Radiation
+          //- option(value="Explosives") Explosives
+          //- option(value="Traps") Trap
+          //- option(value="Melee Weapons") Melee
+          //- option(value="Unarmed Weapons") Unarmed
+          //- option(value="Poison Weapons") Explosive
+          for category in category_list
+            option(value=category._id) #{category.name}
         br
         label(for='description') Description:
         br
