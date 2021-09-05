@@ -4,13 +4,13 @@ block content
   div.container
     h1= title
 
-    form(method='POST' action='')
+    form.create-form(method='POST' action='')
       div.form-group
         label(for='name') Name:
         br
         input.form-control(type='text' placeholder='Name' name='name' required='true' value=(undefined===weapon_name ? '' : weapon_name))
         br
-        label(for="category")
+        label(for="category") Category:
         br
         select(name="category" id="category")
           for category in category_list

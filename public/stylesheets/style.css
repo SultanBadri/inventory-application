@@ -234,23 +234,24 @@ body {
 }
 
 /* weapon_form */
+.create-form {
+}
+
 label {
   font-weight: bold;
 }
 
-input {
+input,
+select {
+  margin: 0.2em 0;
   border-radius: 4px;
   border: 1px solid black;
-  padding: 4px;
+  padding: 6px;
 }
 
 .container {
   padding: 2rem;
 }
-
-/* .form-group {
-  padding: 1rem;
-} */
 
 .submit-button {
   padding: 8px 16px;
