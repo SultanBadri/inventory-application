@@ -77,6 +77,7 @@ exports.weapon_detail = function (req, res, next) {
         weapon_damage: results.weapon.damage,
         weapon_src: results.weapon.src,
         weapon_url: results.weapon.url,
+        weapon_category: results.weapon.category,
         category_list: results.categories,
       });
     }

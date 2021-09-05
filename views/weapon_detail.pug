@@ -32,7 +32,8 @@ block content
           th Clip Size 
           td #{weapon_clipSize}
       hr
-      p
-        a(href=weapon_url + '/delete') Delete weapon
-      p 
-        a(href=weapon_url + '/update') Update weapon
+      div.buttons-container
+        p
+          a.delete-btn(href=weapon_url + '/delete') Delete weapon
+        p 
+          a.update-btn(href=weapon_url + '/update') Update weapon

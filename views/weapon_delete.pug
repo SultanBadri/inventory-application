@@ -1,10 +1,11 @@
 extends layout
 
 block content
-  h1 #{title}: #{weapon.name}
-  p Do you really want to delete this Author?
+  div.delete-container
+    h1 #{title}: #{weapon.name}
+    p Do you really want to delete this Author?
 
-  form(method='POST' action='')
-    div.form-group
-      input.form-control(type='hidden',name='weaponid', required='true', value=weapon._id )
-    button(type='submit') Delete
+    form(method='POST' action='')(style="padding: 0.5em 0")
+      div.form-group
+        input.form-control(type='hidden',name='weaponid', required='true', value=weapon._id )
+      button.delete-btn(type='submit') Delete

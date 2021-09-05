@@ -194,6 +194,38 @@ body {
   width: 60%;
 }
 
+.buttons-container {
+  padding: 2em 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.delete-btn,
+.update-btn {
+  text-decoration: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.delete-btn {
+  background-color: #447ab9;
+}
+
+.update-btn {
+  background-color: #d9af2f;
+}
+
+.delete-btn:hover {
+  background-color: #325886;
+}
+
+.update-btn:hover {
+  background-color: #be9312;
+}
+
 @media (max-width: 768px) {
   .image {
     height: 100%;
@@ -234,4 +266,15 @@ input {
 
 .submit-button:hover {
   background: #36659e;
+}
+
+/* weapon_delete.pug container */
+.delete-container {
+  width: 70%;
+  margin: 0 auto;
+  padding: 2em 0;
+}
+
+.delete-container button {
+  border: none;
 }

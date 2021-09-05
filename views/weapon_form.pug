@@ -14,10 +14,11 @@ block content
         br
         select(name="category" id="category")
           for category in category_list
-            if weapon_category.name === category.name
-              option(value=category._id selected) #{category.name}
-            else
-              option(value=category._id) #{category.name}
+            //- if weapon_category.name === category.name
+            //-   option(value=category._id selected) #{category.name}
+            //- else
+            //-   option(value=category._id) #{category.name}
+            option(value=category._id) #{category.name}
         br
         label(for='description') Description:
         br
