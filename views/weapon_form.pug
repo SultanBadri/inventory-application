@@ -8,48 +8,52 @@ block content
       div.form-group
         label(for='name') Name:
         br
-        input.form-control(type='text' placeholder='Name' name='name' required='true' value=(undefined===weapon ? '' : weapon.name))
+        input.form-control(type='text' placeholder='Name' name='name' required='true' value=(undefined===weapon_name ? '' : weapon_name))
         br
-        label(for="category") Category 
+        label(for="category")
+        br
         select(name="category" id="category")
           for category in category_list
-            option(value=category._id) #{category.name}
+            if weapon_category.name === category.name
+              option(value=category._id selected) #{category.name}
+            else
+              option(value=category._id) #{category.name}
         br
         label(for='description') Description:
         br
-        input.form-control(type='text' name='description' placeholder="Description" value=(undefined===weapon ? '' : weapon.description))
+        input.form-control(type='text' name='description' placeholder="Description" value=(undefined===weapon_description ? '' : weapon_description))
       div.form-group
         label(for='damage') Damage:
         br
-        input.form-control(type='text' name='damage' placeholder="50" value=(undefined===weapon ? '' : weapon.damage))
+        input.form-control(type='text' name='damage' placeholder="50" value=(undefined===weapon_damage ? '' : weapon_damage))
         br
         label(for='price') Price:
         br
-        input.form-control(type='text' name='price' placeholder="$100" value=(undefined===weapon ? '' : weapon.price))
+        input.form-control(type='text' name='price' placeholder="$100" value=(undefined===weapon_price ? '' : weapon_price))
         br
         label(for='weight') Weight:
         br
-        input.form-control(type='text' name='weight' placeholder="10.5" value=(undefined===weapon ? '' : weapon.weight))
+        input.form-control(type='text' name='weight' placeholder="10.5" value=(undefined===weapon_weight ? '' : weapon_weight))
         br
         label(for='ammo') Ammo:
         br
-        input.form-control(type='text' name='ammo' placeholder="10mm" value=(undefined===weapon ? '' : weapon.ammo))
+        input.form-control(type='text' name='ammo' placeholder="10mm" value=(undefined===weapon_ammo ? '' : weapon_ammo))
         br
         label(for='range') Range:
         br
-        input.form-control(type='text' name='range' placeholder="70" value=(undefined===weapon ? '' : weapon.range))
+        input.form-control(type='text' name='range' placeholder="70" value=(undefined===weapon_range ? '' : weapon_range))
         br
         label(for='accuracy') Accuracy:
         br
-        input.form-control(type='text' name='accuracy' placeholder="73" value=(undefined===weapon ? '' : weapon.accuracy))
+        input.form-control(type='text' name='accuracy' placeholder="73" value=(undefined===weapon_accuracy ? '' : weapon_accuracy))
         br
         label(for='clipSize') Clip Size:
         br
-        input.form-control(type='text' name='clipSize' placeholder="24" value=(undefined===weapon ? '' : weapon.clipSize))
+        input.form-control(type='text' name='clipSize' placeholder="24" value=(undefined===weapon_clipSize ? '' : weapon_clipSize))
         br
         label(for='src') URL:
         br
-        input.form-control(type='text' name='src' placeholder="image.png" value=(undefined===weapon ? '' : weapon.src))
+        input.form-control(type='text' name='src' placeholder="image.png" value=(undefined===weapon_src ? '' : weapon_src))
       button.submit-button(type='submit') Submit
     if errors
       ul

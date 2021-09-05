@@ -24,4 +24,10 @@ router.get("/weapons/:id/delete", weapon_controller.weapon_delete_get);
 // POST request to delete weapon
 router.post("/weapons/:id/delete", weapon_controller.weapon_delete_post);
 
+// GET request to update weapon
+router.get("/weapons/:id/update", weapon_controller.weapon_update_get);
+
+// POST request to update weapon
+router.post("/weapons/:id/update", weapon_controller.weapon_update_post);
+
 module.exports = router;

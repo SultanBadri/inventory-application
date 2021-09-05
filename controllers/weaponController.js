@@ -48,9 +48,6 @@ exports.weapon_detail = function (req, res, next) {
           .populate("category")
           .exec(callback);
       },
-      weapon_instance: function (callback) {
-        Weapon.find({ weapon: req.params.id }).exec(callback);
-      },
       categories: function (callback) {
         Category.find()
           .sort([["name", "ascending"]])
@@ -96,9 +93,6 @@ exports.weapon_create_get = function (req, res, next) {
           .populate("category")
           .exec(callback);
       },
-      weapon_instance: function (callback) {
-        Weapon.find({ weapon: req.params.id }).exec(callback);
-      },
       categories: function (callback) {
         Category.find()
           .sort([["name", "ascending"]])
@@ -122,9 +116,9 @@ exports.weapon_create_get = function (req, res, next) {
 exports.weapon_create_post = [
   // Validate and sanitize fields.
   body("name").trim().isLength({ min: 1 }).escape(),
-  body("category").trim().isLength({min: 1}).escape(),
+  body("category").trim().isLength({ min: 1 }).escape(),
   body("description").trim().isLength({ min: 1 }).escape(),
-  body("damage").trim().isLength({min: 1}).escape(),
+  body("damage").trim().isLength({ min: 1 }).escape(),
   body("price").trim().isLength({ min: 1 }).escape(),
   body("weight").trim().isLength({ min: 1 }).escape(),
   body("ammo").trim().isLength({ min: 1 }).escape(),
@@ -176,37 +170,178 @@ exports.weapon_create_post = [
 ];
 
 // Display weapon delete form on GET.
-exports.weapon_delete_get = function(req, res, next) {
-
-  async.parallel({
-      weapon: function(callback) {
-          Weapon.findById(req.params.id).exec(callback)
+exports.weapon_delete_get = function (req, res, next) {
+  async.parallel(
+    {
+      weapon: function (callback) {
+        Weapon.findById(req.params.id).exec(callback);
       },
-  }, function(err, results) {
-      if (err) { return next(err); }
-      if (results.weapon==null) { // No results.
-          res.redirect('/inventory');
+    },
+    function (err, results) {
+      if (err) {
+        return next(err);
+      }
+      if (results.weapon == null) {
+        // No results.
+        res.redirect("/inventory");
       }
       // Successful, so render.
-      res.render('weapon_delete', { title: 'Delete Weapon', weapon: results.weapon } );
-  });
+      res.render("weapon_delete", {
+        title: "Delete Weapon",
+        weapon: results.weapon,
+      });
+    }
+  );
 };
 
 // Handle Weapon delete on POST.
-exports.weapon_delete_post = function(req, res, next) {
-
-    async.parallel({
-        weapon: function(callback) {
-          Weapon.findById(req.body.weaponid).exec(callback)
-        },
-    }, function(err, results) {
-        if (err) { return next(err); }
-          // Success
-          // Delete weapon and redirect to the list of weapons.
-          Weapon.findByIdAndRemove(req.body.weaponid, function deleteWeapon(err) {
-            if (err) { return next(err); }
-              // Success - go to weapons list
-              res.redirect('/inventory')
-          })
-    });
+exports.weapon_delete_post = function (req, res, next) {
+  async.parallel(
+    {
+      weapon: function (callback) {
+        Weapon.findById(req.body.weaponid).exec(callback);
+      },
+    },
+    function (err, results) {
+      if (err) {
+        return next(err);
+      }
+      // Success
+      // Delete weapon and redirect to the list of weapons.
+      Weapon.findByIdAndRemove(req.body.weaponid, function deleteWeapon(err) {
+        if (err) {
+          return next(err);
+        }
+        // Success - go to weapons list
+        res.redirect("/inventory");
+      });
+    }
+  );
 };
+
+// Display weapon update form on GET.
+exports.weapon_update_get = function (req, res, next) {
+  // Get weapons and categories for form.
+  async.parallel(
+    {
+      weapon: function (callback) {
+        Weapon.findById(req.params.id)
+          .populate("weapon")
+          .populate("category")
+          .exec(callback);
+      },
+      categories: function (callback) {
+        Category.find(callback);
+      },
+    },
+    function (err, results) {
+      if (err) {
+        return next(err);
+      }
+      if (results.weapon == null) {
+        // No results.
+        var err = new Error("Weapon not found");
+        err.status = 404;
+        return next(err);
+      }
+      // Success
+      res.render("weapon_form", {
+        title: "Update Weapon",
+        weapon_name: results.weapon.name,
+        weapon_description: results.weapon.description,
+        weapon_price: results.weapon.price,
+        weapon_weight: results.weapon.weight,
+        weapon_ammo: results.weapon.ammo,
+        weapon_range: results.weapon.range,
+        weapon_accuracy: results.weapon.accuracy,
+        weapon_clipSize: results.weapon.clipSize,
+        weapon_damage: results.weapon.damage,
+        weapon_src: results.weapon.src,
+        weapon_url: results.weapon.url,
+        weapon_category: results.weapon.category,
+        category_list: results.categories,
+      });
+    }
+  );
+};
+
+// Handle weapon update on POST.
+exports.weapon_update_post = [
+  // Validate and sanitise fields.
+  body("name").trim().isLength({ min: 1 }).escape(),
+  body("category").trim().isLength({ min: 1 }).escape(),
+  body("description").trim().isLength({ min: 1 }).escape(),
+  body("damage").trim().isLength({ min: 1 }).escape(),
+  body("price").trim().isLength({ min: 1 }).escape(),
+  body("weight").trim().isLength({ min: 1 }).escape(),
+  body("ammo").trim().isLength({ min: 1 }).escape(),
+  body("range").trim().isLength({ min: 1 }).escape(),
+  body("accuracy").trim().isLength({ min: 1 }).escape(),
+  body("clipSize").trim().isLength({ min: 1 }).escape(),
+  body("src").trim().isLength({ min: 1 }).escape(),
+
+  // Process request after validation and sanitization.
+  (req, res, next) => {
+    // Extract the validation errors from a request.
+    const errors = validationResult(req);
+
+    // Create a weapon object with escaped/trimmed data and old id.
+    var weapon = new Weapon({
+      name: req.body.name,
+      category: req.body.category,
+      description: req.body.description,
+      damage: req.body.damage,
+      price: req.body.price,
+      weight: req.body.weight,
+      ammo: req.body.ammo,
+      range: req.body.range,
+      accuracy: req.body.accuracy,
+      clipSize: req.body.clipSize,
+      damage: req.body.damage,
+      src: req.body.src,
+      _id: req.params.id,
+    });
+
+    if (!errors.isEmpty()) {
+      // There are errors. Render form again with sanitized values/error messages.
+
+      // Get all weapons and categories for form.
+      async.parallel(
+        {
+          weapons: function (callback) {
+            Weapon.find(callback);
+          },
+          categories: function (callback) {
+            Categories.find(callback);
+          },
+        },
+        function (err, results) {
+          if (err) {
+            return next(err);
+          }
+          res.render("weapon_form", {
+            title: "Update Weapon",
+            weapons: results.weapons,
+            category_list: results.categories,
+            errors: errors.array(),
+          });
+        }
+      );
+      return;
+    } else {
+      // Data from form is valid. Update the records
+      Weapon.findByIdAndUpdate(
+        req.params.id,
+        weapon,
+        {},
+        function (err, theweapon) {
+          if (err) {
+            return next(err);
+          }
+          // Successful - redirect to weapon detail page.
+          res.redirect(theweapon.url);
+        }
+      );
+    }
+  },
+];
