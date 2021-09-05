@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 #{title}: #{weapon.name}
+  p Do you really want to delete this Author?
+
+  form(method='POST' action='')
+    div.form-group
+      input.form-control(type='hidden',name='weaponid', required='true', value=weapon._id )
+    button(type='submit') Delete

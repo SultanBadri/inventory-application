@@ -79,6 +79,7 @@ exports.weapon_detail = function (req, res, next) {
         weapon_clipSize: results.weapon.clipSize,
         weapon_damage: results.weapon.damage,
         weapon_src: results.weapon.src,
+        weapon_url: results.weapon.url,
         category_list: results.categories,
       });
     }
@@ -173,3 +174,39 @@ exports.weapon_create_post = [
     }
   },
 ];
+
+// Display weapon delete form on GET.
+exports.weapon_delete_get = function(req, res, next) {
+
+  async.parallel({
+      weapon: function(callback) {
+          Weapon.findById(req.params.id).exec(callback)
+      },
+  }, function(err, results) {
+      if (err) { return next(err); }
+      if (results.weapon==null) { // No results.
+          res.redirect('/inventory');
+      }
+      // Successful, so render.
+      res.render('weapon_delete', { title: 'Delete Weapon', weapon: results.weapon } );
+  });
+};
+
+// Handle Weapon delete on POST.
+exports.weapon_delete_post = function(req, res, next) {
+
+    async.parallel({
+        weapon: function(callback) {
+          Weapon.findById(req.body.weaponid).exec(callback)
+        },
+    }, function(err, results) {
+        if (err) { return next(err); }
+          // Success
+          // Delete weapon and redirect to the list of weapons.
+          Weapon.findByIdAndRemove(req.body.weaponid, function deleteWeapon(err) {
+            if (err) { return next(err); }
+              // Success - go to weapons list
+              res.redirect('/inventory')
+          })
+    });
+};
