@@ -177,6 +177,11 @@ exports.weapon_delete_get = function (req, res, next) {
       weapon: function (callback) {
         Weapon.findById(req.params.id).exec(callback);
       },
+      categories: function (callback) {
+        Category.find()
+          .sort([["name", "ascending"]])
+          .exec(callback);
+      },
     },
     function (err, results) {
       if (err) {
@@ -190,6 +195,7 @@ exports.weapon_delete_get = function (req, res, next) {
       res.render("weapon_delete", {
         title: "Delete Weapon",
         weapon: results.weapon,
+        category_list: results.categories,
       });
     }
   );
