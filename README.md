@@ -1,6 +1,6 @@
 # inventory-application
 
-Node and Express inventory application made with Pug.js and MongoDB.
+Inventory application made with Node.js, Express, and MongoDB.
 
 ## Getting started
 
