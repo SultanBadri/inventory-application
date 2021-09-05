@@ -10,10 +10,25 @@ block content
         br
         input.form-control(type='text' placeholder='Name' name='name' required='true' value=(undefined===weapon ? '' : weapon.name))
         br
+        label(for="category") Category 
+        select(name="category" id="category")
+          option(value="Ballistic") Ballistic
+          option(value="Energy") Energy
+          option(value="Radiation") Radiation
+          option(value="Explosives") Explosives
+          option(value="Traps") Traps
+          option(value="Melee") Melee
+          option(value="Unarmed") Unarmed
+          option(value="Explosives") Explosives
+        br
         label(for='description') Description:
         br
-        textarea.form-control(type='text' placeholder='Description')
+        input.form-control(type='text' name='description' placeholder="Description" value=(undefined===weapon ? '' : weapon.description))
       div.form-group
+        label(for='damage') Damage:
+        br
+        input.form-control(type='text' name='damage' placeholder="50" value=(undefined===weapon ? '' : weapon.damage))
+        br
         label(for='price') Price:
         br
         input.form-control(type='text' name='price' placeholder="$100" value=(undefined===weapon ? '' : weapon.price))
@@ -34,13 +49,13 @@ block content
         br
         input.form-control(type='text' name='accuracy' placeholder="73" value=(undefined===weapon ? '' : weapon.accuracy))
         br
-        label(for='clip-size') Clip Size:
+        label(for='clipSize') Clip Size:
         br
-        input.form-control(type='text' name='clip-size' placeholder="24" value=(undefined===weapon ? '' : weapon.clipSize))
+        input.form-control(type='text' name='clipSize' placeholder="24" value=(undefined===weapon ? '' : weapon.clipSize))
         br
         label(for='src') URL:
         br
-        input.form-control(type='file' name='src' placeholder="image.png" value=(undefined===weapon ? '' : weapon.src))
+        input.form-control(type='text' name='src' placeholder="image.png" value=(undefined===weapon ? '' : weapon.src))
       button.submit-button(type='submit') Submit
     if errors
       ul

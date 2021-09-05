@@ -121,13 +121,15 @@ exports.weapon_create_get = function (req, res, next) {
 exports.weapon_create_post = [
   // Validate and sanitize fields.
   body("name").trim().isLength({ min: 1 }).escape(),
+  body("category").trim().isLength({min: 1}).escape(),
   body("description").trim().isLength({ min: 1 }).escape(),
+  body("damage").trim().isLength({min: 1}).escape(),
   body("price").trim().isLength({ min: 1 }).escape(),
   body("weight").trim().isLength({ min: 1 }).escape(),
   body("ammo").trim().isLength({ min: 1 }).escape(),
   body("range").trim().isLength({ min: 1 }).escape(),
   body("accuracy").trim().isLength({ min: 1 }).escape(),
-  body("clip-size").trim().isLength({ min: 1 }).escape(),
+  body("clipSize").trim().isLength({ min: 1 }).escape(),
   body("src").trim().isLength({ min: 1 }).escape(),
 
   // Process request after validation and sanitization.
@@ -148,7 +150,9 @@ exports.weapon_create_post = [
 
       // Create an Weapon object with escaped and trimmed data.
       var weapon = new Weapon({
+        category: req.body.category,
         description: req.body.description,
+        damage: req.body.damage,
         price: req.body.price,
         weight: req.body.weight,
         ammo: req.body.ammo,
